@@ -24,7 +24,7 @@ public class WeaponChange : MonoBehaviour
         gun.SetActive(false);
         raycast.SetActive(false);     /////���]�������
         laser.SetActive(false);
-
+        //laser = GameObject.Find("laser");
     }
 
     // Update is called once per frame
