@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 540151233095428793}
   - component: {fileID: 540151233085386577}
   - component: {fileID: -8920469661707322848}
+  - component: {fileID: 6945245483448876168}
   - component: {fileID: -8978401044077996316}
   - component: {fileID: 6009976494807898185}
   m_Layer: 0
@@ -207,6 +208,23 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6945245483448876168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540151233095399065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d157594dccf64d28bf03e655f496b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 4043457031181074609}
+  maxHealth: 100
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &-8978401044077996316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +574,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ae09cdec6b4d4e1bb64cc7df807075b, type: 3}
+--- !u!114 &4043457031181074609 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3750511064500721308, guid: 5ae09cdec6b4d4e1bb64cc7df807075b, type: 3}
+  m_PrefabInstance: {fileID: 869550205440513581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0e54ac5fb674315a45a0f93c9f65a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4043457031181074610 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3750511064500721311, guid: 5ae09cdec6b4d4e1bb64cc7df807075b, type: 3}

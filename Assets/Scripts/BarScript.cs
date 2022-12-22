@@ -22,11 +22,5 @@ public class BarScript : MonoBehaviour
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue); // normalized 可以把值變成從 0f - 1f
     }
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    SetHealth(50);
-        //}
-    }
+    
 }
