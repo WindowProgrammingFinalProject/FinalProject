@@ -17,6 +17,7 @@ public class WeaponChange : MonoBehaviour
 
     public bool now_is_sword = true;
 
+
     public int swordDamage = 15;
     public float swordAttackRange = 1.5f;
 
@@ -27,6 +28,7 @@ public class WeaponChange : MonoBehaviour
         raycast.SetActive(false);     /////���]�������
         laser.SetActive(false);
         //laser = GameObject.Find("laser");
+        //audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -52,11 +54,13 @@ public class WeaponChange : MonoBehaviour
         {
            // myAnimator.SetBool()
             laser.SetActive(true);
+            raycast.SetActive(false);
             lastTime = Time.time;      //�o�̧Q��start�}�l�ɶ}�l�p��
         }
         if (curTime - lastTime >= 0.5)   //�ɶ��t�j��0.5���L��
         {
             laser.SetActive(false);
+            raycast.SetActive(true);
         }
     }
 }
