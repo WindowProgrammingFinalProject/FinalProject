@@ -10,18 +10,18 @@ public class WeaponChange : MonoBehaviour
     public GameObject gun;
     public GameObject raycast;
 
-    private bool now_is_sword = true;
+    public bool now_is_sword = true;
 
     void Start()
     {
         gun.SetActive(false);
-        raycast.SetActive(false);     /////¥ý³]¬°¤£Åã¥Ü
+        raycast.SetActive(false);     /////ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && now_is_sword)   ///////////ª««~ªº±Ò¥Î»P°±¥Î
+        if (Input.GetKeyDown(KeyCode.R) && now_is_sword)   ///////////ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½Ò¥Î»Pï¿½ï¿½ï¿½ï¿½
         {                                                  ///////////https://www.cg.com.tw/UnityCSharp/Content/SetActive.php
             sword.SetActive(false);
             gun.SetActive(true);

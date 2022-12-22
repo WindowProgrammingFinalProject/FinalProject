@@ -36,6 +36,7 @@ public class EnemyAiScript : MonoBehaviour
 
     private void Update()
     {
+        AttackPlayer();
         //Check for sight and attack range
         if (alive) playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         if (alive) playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -82,5 +83,13 @@ public class EnemyAiScript : MonoBehaviour
     private void AttackPlayer()
     {
         // todo
+        if (GameObject.Find("maincharacter").GetComponent<WeaponChange>().now_is_sword)
+        {
+            Debug.Log("now is sword");
+        }
+        else
+        {
+            Debug.Log("not sword");
+        }
     }
 }
