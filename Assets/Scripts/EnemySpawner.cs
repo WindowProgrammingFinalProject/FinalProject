@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
     {
         if(other.transform.name == "maincharacter" && !everentertheroom)
         {
-            Debug.Log("spawn!!");
 
             everentertheroom = true;//has entered thr room
             enemyNumber = Random.Range(3, 7);//random enemy number
