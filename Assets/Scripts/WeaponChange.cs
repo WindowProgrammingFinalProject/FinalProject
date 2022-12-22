@@ -8,29 +8,31 @@ public class WeaponChange : MonoBehaviour
 
     public GameObject sword;
     public GameObject gun;
-    public GameObject raycast; ///ºË·Ç½u
-    public GameObject laser;   ///¹p®g¥ú
+    public GameObject raycast; ///ï¿½Ë·Ç½u
+    public GameObject laser;   ///ï¿½pï¿½gï¿½ï¿½
 
-    private float lastTime;   //­p®É¾¹
+    private float lastTime;   //ï¿½pï¿½É¾ï¿½
     private float curTime;
 
-    private Animator myAnimator;  //°Êµe±±¨î
+    private Animator myAnimator;  //ï¿½Êµeï¿½ï¿½ï¿½ï¿½
 
-    private bool now_is_sword = true;
+    public bool now_is_sword = true;
 
     void Start()
     {
         myAnimator = GetComponent<Animator>(); // Animator
         gun.SetActive(false);
-        raycast.SetActive(false);     /////¥ý³]¬°¤£Åã¥Ü
+        raycast.SetActive(false);     /////ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         laser.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        curTime = Time.time;  ///­p®É¡A²{¦b®É¶¡
-        if (Input.GetKeyDown(KeyCode.R) && now_is_sword)   ///////////ª««~ªº±Ò¥Î»P°±¥Î
+        curTime = Time.time;  ///ï¿½pï¿½É¡Aï¿½{ï¿½bï¿½É¶ï¿½
+        if (Input.GetKeyDown(KeyCode.R) && now_is_sword)   ///////////ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½Ò¥Î»Pï¿½ï¿½ï¿½ï¿½
+
         {                                                  ///////////https://www.cg.com.tw/UnityCSharp/Content/SetActive.php
             sword.SetActive(false);
             gun.SetActive(true);
@@ -48,9 +50,9 @@ public class WeaponChange : MonoBehaviour
         {
            // myAnimator.SetBool()
             laser.SetActive(true);
-            lastTime = Time.time;      //³o¸Ì§Q¥Îstart¶}©l®É¶}©l­p®É
+            lastTime = Time.time;      //ï¿½oï¿½Ì§Qï¿½ï¿½startï¿½}ï¿½lï¿½É¶}ï¿½lï¿½pï¿½ï¿½
         }
-        if (curTime - lastTime >= 0.5)   //®É¶¡®t¤j©ó0.5¬í¹L«á
+        if (curTime - lastTime >= 0.5)   //ï¿½É¶ï¿½ï¿½tï¿½jï¿½ï¿½0.5ï¿½ï¿½ï¿½Lï¿½ï¿½
         {
             laser.SetActive(false);
         }
