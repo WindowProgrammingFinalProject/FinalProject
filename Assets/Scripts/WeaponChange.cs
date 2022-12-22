@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponChange : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     public GameObject sword;
     public GameObject gun;
@@ -18,7 +17,9 @@ public class WeaponChange : MonoBehaviour
 
     public bool now_is_sword = true;
 
-    //[RequireComponent(typeof(AudioSource))]
+
+    public int swordDamage = 15;
+    public float swordAttackRange = 1.5f;
 
     void Start()
     {

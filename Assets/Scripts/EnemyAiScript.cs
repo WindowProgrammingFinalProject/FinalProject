@@ -85,11 +85,11 @@ public class EnemyAiScript : MonoBehaviour
         // todo
         if (GameObject.Find("maincharacter").GetComponent<WeaponChange>().now_is_sword)
         {
-            Debug.Log("now is sword");
+            //Debug.Log("now is sword");
         }
         else
         {
-            Debug.Log("not sword");
+            //Debug.Log("not sword");
         }
     }
 }
