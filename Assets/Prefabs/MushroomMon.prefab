@@ -196,7 +196,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -249,7 +249,7 @@ MonoBehaviour:
   walkPointRange: 4
   timeBetweenAttacks: 1
   sightRange: 10
-  attackRange: 1.5
+  attackRange: 2.5
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!136 &6009976494807898185
@@ -262,10 +262,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.2160896
+  m_Radius: 0.43262672
+  m_Height: 1.3753297
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5518779, z: 0}
+  m_Center: {x: 0, y: 0.50798047, z: 0.067373276}
 --- !u!1 &540151233095399067
 GameObject:
   m_ObjectHideFlags: 0
