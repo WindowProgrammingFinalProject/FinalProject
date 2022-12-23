@@ -14,10 +14,12 @@ public class MushroomMonStatusController : MonoBehaviour
     int playerDamage;
     float playerAttackRange;
     public LayerMask whatIsPlayer;
+    GameObject playerObject;
 
     void Start()
     {
         SetMaxHealth();
+        playerObject = GameObject.Find("maincharacter");
     }
 
     void Update()
@@ -70,9 +72,13 @@ public class MushroomMonStatusController : MonoBehaviour
     }
     void PlayerAttackCheck()
     {
+        
         if (Input.GetMouseButtonDown(0) && IsSword() && IsCloseToPlayer())
         {
-            GameObject.Find("maincharacter").transform.LookAt(transform);
+            var targetRotation = Quaternion.LookRotation(transform.position - playerObject.transform.position);
+            playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, 5 * Time.deltaTime);
+
+            //GameObject.Find("maincharacter").transform.LookAt(transform);
             TakeDamage(playerDamage);
         }
     }
