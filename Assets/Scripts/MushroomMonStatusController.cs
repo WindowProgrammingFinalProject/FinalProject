@@ -14,10 +14,12 @@ public class MushroomMonStatusController : MonoBehaviour
     int playerDamage;
     float playerAttackRange;
     public LayerMask whatIsPlayer;
+    GameObject playerObject;
 
     void Start()
     {
         SetMaxHealth();
+        playerObject = GameObject.Find("maincharacter");
     }
 
     void Update()
