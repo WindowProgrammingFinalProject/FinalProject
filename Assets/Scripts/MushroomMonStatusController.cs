@@ -70,9 +70,10 @@ public class MushroomMonStatusController : MonoBehaviour
     }
     void PlayerAttackCheck()
     {
+        
         if (Input.GetMouseButtonDown(0) && IsSword() && IsCloseToPlayer())
         {
-            GameObject.Find("maincharacter").transform.LookAt(transform);
+            //GameObject.Find("maincharacter").transform.LookAt(transform); // 玩家轉向敵人，但感覺有點生硬
             TakeDamage(playerDamage);
         }
     }
