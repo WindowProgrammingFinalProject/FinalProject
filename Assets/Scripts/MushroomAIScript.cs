@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAiScript : MonoBehaviour
+public class MushroomAIScript : MonoBehaviour
 {
 
     public NavMeshAgent agent;
@@ -20,13 +20,14 @@ public class EnemyAiScript : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    [SerializeField] float timeBetweenAttacks;
-    bool alreadyAttacked;
+    [SerializeField] float timeBetweenAttacks = 1;
+    bool alreadyAttacked = false;
 
     //States
     [SerializeField] float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-    bool alive = true;
+    public int mushroomDamage = 7;
+
 
     private void Awake()
     {
@@ -36,14 +37,13 @@ public class EnemyAiScript : MonoBehaviour
 
     private void Update()
     {
-        AttackPlayer();
         //Check for sight and attack range
-        if (alive) playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        if (alive) playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange && alive) Patroling();
-        if (playerInSightRange && !playerInAttackRange && alive) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange && alive) AttackPlayer();
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange) AttackPlayer();
 
     }
 
@@ -82,15 +82,16 @@ public class EnemyAiScript : MonoBehaviour
 
     private void AttackPlayer()
     {
-        // todo
-        if (GameObject.Find("maincharacter").GetComponent<WeaponChange>().now_is_sword)
+        // todo: decrease player health
+        if (!alreadyAttacked)
         {
-            //Debug.Log("now is sword");
-        }
-        else
-        {
-            //Debug.Log("not sword");
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            player.GetComponent<PlayerMovement>().TakeDamage(mushroomDamage);
         }
     }
-    
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
 }
