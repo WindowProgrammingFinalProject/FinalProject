@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MushroomMonStatusController : MonoBehaviour
 {
@@ -8,29 +9,23 @@ public class MushroomMonStatusController : MonoBehaviour
     private int currentHealth;
     public BarScript healthBar;
 
-    [SerializeField] int maxHealth = 100;
-    bool alive = true;
+    [SerializeField] int maxHealth = 45;
     bool now_is_sword;
     int playerDamage;
     float playerAttackRange;
     public LayerMask whatIsPlayer;
+    GameObject playerObject;
 
     void Start()
     {
         SetMaxHealth();
+        playerObject = GameObject.Find("maincharacter");
     }
 
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(0) && IsSword() && IsCloseToPlayer())
-        {
-            TakeDamage(playerDamage);
-            Debug.Log("take damage");
-        }
-
+        PlayerAttackCheck();
         StatusCheck(); // check if the mushroom die
-        
     }
 
     // call the function below to change mushroom's health status
@@ -50,10 +45,10 @@ public class MushroomMonStatusController : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            alive = false;
-            transform.localPosition += new Vector3(0, 0.1f, 0);
             transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
-            gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider 
+            gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
+            gameObject.GetComponent<NavMeshAgent>().enabled = false; // disable navMeshAgent
+
             Invoke(nameof(DestroyMushroom), 3);
         }
     }
@@ -73,9 +68,15 @@ public class MushroomMonStatusController : MonoBehaviour
 
     bool IsCloseToPlayer()
     {
-        // todo
-        // check player layer sphere
-        return Physics.CheckSphere(transform.position, playerAttackRange, whatIsPlayer);
+        return Physics.CheckSphere(transform.position, playerAttackRange, whatIsPlayer);   
+    }
+    void PlayerAttackCheck()
+    {
         
+        if (Input.GetMouseButtonDown(0) && IsSword() && IsCloseToPlayer())
+        {
+            //GameObject.Find("maincharacter").transform.LookAt(transform); // 玩家轉向敵人，但感覺有點生硬
+            TakeDamage(playerDamage);
+        }
     }
 }
