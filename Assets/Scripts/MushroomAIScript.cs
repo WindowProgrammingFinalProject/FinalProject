@@ -31,13 +31,14 @@ public class MushroomAIScript : MonoBehaviour
     public int mushroomDamage = 7;
     public bool alive = true;
 
-    public AudioClip impact;
+    public AudioClip die;
     AudioSource audiosource;
 
     private void Awake()
     {
         player = GameObject.Find("maincharacter").transform;
         agent = GetComponent<NavMeshAgent>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     private void Update()
