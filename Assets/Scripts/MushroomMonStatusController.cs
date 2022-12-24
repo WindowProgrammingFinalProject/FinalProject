@@ -63,7 +63,7 @@ public class MushroomMonStatusController : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
             gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
             gameObject.GetComponent<NavMeshAgent>().enabled = false; // disable navMeshAgent
-
+            gameObject.GetComponent<MushroomAIScript>().alive = false;
             Invoke(nameof(DestroyMushroom), 3);
         }
     }

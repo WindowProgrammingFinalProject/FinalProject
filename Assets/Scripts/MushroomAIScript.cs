@@ -29,6 +29,7 @@ public class MushroomAIScript : MonoBehaviour
     [SerializeField] float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     public int mushroomDamage = 7;
+    public bool alive = true;
 
     public AudioClip impact;
     AudioSource audiosource;
@@ -42,12 +43,13 @@ public class MushroomAIScript : MonoBehaviour
     private void Update()
     {
         //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (alive) playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if (alive) playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (!alive) playerInSightRange = false;
+        if (!alive) playerInSightRange = false;
+        if (!playerInSightRange && !playerInAttackRange && alive) Patroling();
+        if (playerInSightRange && !playerInAttackRange && alive) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange && alive) AttackPlayer();
 
     }
 

@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: -8978401044077996316}
   - component: {fileID: 6009976494807898185}
   - component: {fileID: -6026303616169709536}
-  - component: {fileID: 8129805240214130730}
   - component: {fileID: 8165615904690021907}
   m_Layer: 0
   m_Name: MushroomMon
@@ -270,23 +269,8 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   mushroomDamage: 7
+  alive: 1
   impact: {fileID: 0}
---- !u!54 &8129805240214130730
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540151233095399065}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!82 &8165615904690021907
 AudioSource:
   m_ObjectHideFlags: 0
