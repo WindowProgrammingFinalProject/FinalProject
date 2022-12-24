@@ -138,9 +138,9 @@ GameObject:
   - component: {fileID: 540151233095428793}
   - component: {fileID: 540151233085386577}
   - component: {fileID: -8920469661707322848}
-  - component: {fileID: 6945245483448876168}
   - component: {fileID: -8978401044077996316}
   - component: {fileID: 6009976494807898185}
+  - component: {fileID: -6026303616169709536}
   m_Layer: 0
   m_Name: MushroomMon
   m_TagString: Untagged
@@ -196,7 +196,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -208,7 +208,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6945245483448876168
+--- !u!114 &-8978401044077996316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,37 +221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4043457031181074609}
-  maxHealth: 100
+  maxHealth: 45
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &-8978401044077996316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540151233095399065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0df7e7959f0c453f949eb5fa891e831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: -8920469661707322848}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 4
-  timeBetweenAttacks: 1
-  sightRange: 10
-  attackRange: 1.5
-  playerInSightRange: 0
-  playerInAttackRange: 0
 --- !u!136 &6009976494807898185
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -262,10 +235,37 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.2160896
+  m_Radius: 0.43262672
+  m_Height: 1.3753297
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5518779, z: 0}
+  m_Center: {x: 0, y: 0.50798047, z: 0.067373276}
+--- !u!114 &-6026303616169709536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540151233095399065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171468bd6ae3d4160b8fe23c862ccb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 5
+  timeBetweenAttacks: 1
+  sightRange: 10
+  attackRange: 2
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!1 &540151233095399067
 GameObject:
   m_ObjectHideFlags: 0
