@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class MushroomAIScript : MonoBehaviour
 {
 
@@ -28,6 +30,8 @@ public class MushroomAIScript : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     public int mushroomDamage = 7;
 
+    public AudioClip impact;
+    AudioSource audiosource;
 
     private void Awake()
     {
