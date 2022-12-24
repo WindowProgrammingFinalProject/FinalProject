@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class MushroomMonStatusController : MonoBehaviour
 {
 
@@ -16,10 +18,19 @@ public class MushroomMonStatusController : MonoBehaviour
     public LayerMask whatIsPlayer;
     GameObject playerObject;
 
+    private float lastTime;   //�p�ɾ�
+    private float curTime;
+
+    public AudioClip die;
+    AudioSource audiosource;
+
+    bool guncanhit = true;
+
     void Start()
     {
         SetMaxHealth();
         playerObject = GameObject.Find("maincharacter");
+        audiosource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -33,6 +44,10 @@ public class MushroomMonStatusController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0)
+        {
+            audiosource.PlayOneShot(die);
+        }
     }
 
     public void SetMaxHealth()
@@ -66,6 +81,7 @@ public class MushroomMonStatusController : MonoBehaviour
         return GameObject.Find("maincharacter").GetComponent<WeaponChange>().now_is_sword;
     }
 
+
     bool IsCloseToPlayer()
     {
         return Physics.CheckSphere(transform.position, playerAttackRange, whatIsPlayer);   
@@ -77,6 +93,22 @@ public class MushroomMonStatusController : MonoBehaviour
         {
             //GameObject.Find("maincharacter").transform.LookAt(transform); // 玩家轉向敵人，但感覺有點生硬
             TakeDamage(playerDamage);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "laser" && guncanhit)
+        {
+            curTime = Time.time;
+            Debug.Log("hit");
+            currentHealth -= GameObject.Find("maincharacter").GetComponent<WeaponChange>().gunDamage;
+            healthBar.SetHealth(currentHealth);
+            guncanhit = false;
+            if (curTime - lastTime >= 0.5)   //�ɶ��t�j��0.5���L��
+            {
+                guncanhit = true;
+            }
         }
     }
 }

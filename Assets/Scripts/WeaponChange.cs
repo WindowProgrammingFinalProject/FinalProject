@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class WeaponChange : MonoBehaviour
 {
 
@@ -21,12 +23,19 @@ public class WeaponChange : MonoBehaviour
     public int swordDamage = 15;
     public float swordAttackRange = 1.5f;
 
+    public int gunDamage = 15;
+    private bool guncanshot = true;
+
+    public AudioClip shot;
+    AudioSource audiosource;
+
     void Start()
     {
         myAnimator = GetComponent<Animator>(); // Animator
         gun.SetActive(false);
         raycast.SetActive(false);     /////���]�������
         laser.SetActive(false);
+        audiosource = GetComponent<AudioSource>();
         //laser = GameObject.Find("laser");
         //audiosource = GetComponent<AudioSource>();
     }
@@ -43,24 +52,26 @@ public class WeaponChange : MonoBehaviour
             raycast.SetActive(true);
             now_is_sword = false;
         }
-        else if(Input.GetKeyDown(KeyCode.R) && !now_is_sword)
+        else if (Input.GetKeyDown(KeyCode.R) && !now_is_sword)
         {
             sword.SetActive(true);
             gun.SetActive(false);
             raycast.SetActive(false);
             now_is_sword = true;
         }
-        if (Input.GetMouseButtonDown(0) && !now_is_sword)
+        if (Input.GetMouseButtonDown(0) && !now_is_sword && guncanshot)
         {
-           // myAnimator.SetBool()
+            audiosource.PlayOneShot(shot);
             laser.SetActive(true);
             raycast.SetActive(false);
             lastTime = Time.time;      //�o�̧Q��start�}�l�ɶ}�l�p��
+            guncanshot = false;
         }
-        if (curTime - lastTime >= 0.5)   //�ɶ��t�j��0.5���L��
+        if (curTime - lastTime >= 0.5 && !guncanshot)   //�ɶ��t�j��0.5���L��
         {
             laser.SetActive(false);
             raycast.SetActive(true);
+            guncanshot = true;
         }
     }
 }
