@@ -2,38 +2,76 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class WeaponChange : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     public GameObject sword;
     public GameObject gun;
-    public GameObject raycast;
+    public GameObject raycast; ///ï¿½Ë·Ç½u
+    public GameObject laser;   ///ï¿½pï¿½gï¿½ï¿½
 
-    private bool now_is_sword = true;
+    private float lastTime;   //ï¿½pï¿½É¾ï¿½
+    private float curTime;
+
+    private Animator myAnimator;  //ï¿½Êµeï¿½ï¿½ï¿½ï¿½
+
+    public bool now_is_sword = true;
+
+
+    public int swordDamage = 15;
+    public float swordAttackRange = 1.5f;
+
+    public int gunDamage = 15;
+    private bool guncanshot = true;
+
+    public AudioClip shot;
+    AudioSource audiosource;
 
     void Start()
     {
+        myAnimator = GetComponent<Animator>(); // Animator
         gun.SetActive(false);
-        raycast.SetActive(false);     /////¥ý³]¬°¤£Åã¥Ü
+        raycast.SetActive(false);     /////ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        laser.SetActive(false);
+        audiosource = GetComponent<AudioSource>();
+        //laser = GameObject.Find("laser");
+        //audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && now_is_sword)   ///////////ª««~ªº±Ò¥Î»P°±¥Î
+        curTime = Time.time;  ///ï¿½pï¿½É¡Aï¿½{ï¿½bï¿½É¶ï¿½
+        if (Input.GetKeyDown(KeyCode.R) && now_is_sword)   ///////////ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½Ò¥Î»Pï¿½ï¿½ï¿½ï¿½
+
         {                                                  ///////////https://www.cg.com.tw/UnityCSharp/Content/SetActive.php
             sword.SetActive(false);
             gun.SetActive(true);
             raycast.SetActive(true);
             now_is_sword = false;
         }
-        else if(Input.GetKeyDown(KeyCode.R) && !now_is_sword)
+        else if (Input.GetKeyDown(KeyCode.R) && !now_is_sword)
         {
             sword.SetActive(true);
             gun.SetActive(false);
             raycast.SetActive(false);
             now_is_sword = true;
+        }
+        if (Input.GetMouseButtonDown(0) && !now_is_sword && guncanshot)
+        {
+            audiosource.PlayOneShot(shot);
+            laser.SetActive(true);
+            raycast.SetActive(false);
+            lastTime = Time.time;      //ï¿½oï¿½Ì§Qï¿½ï¿½startï¿½}ï¿½lï¿½É¶}ï¿½lï¿½pï¿½ï¿½
+            guncanshot = false;
+        }
+        if (curTime - lastTime >= 0.5 && !guncanshot)   //ï¿½É¶ï¿½ï¿½tï¿½jï¿½ï¿½0.5ï¿½ï¿½ï¿½Lï¿½ï¿½
+        {
+            laser.SetActive(false);
+            raycast.SetActive(true);
+            guncanshot = true;
         }
     }
 }
