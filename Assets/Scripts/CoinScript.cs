@@ -33,10 +33,11 @@ public class CoinScript : MonoBehaviour
             other.GetComponent<PlayerMovement>().coinNumber += score;
             point = (other.GetComponent<PlayerMovement>().coinNumber).ToString();
             GetComponent<MeshRenderer>().enabled = false;
-            Invoke(nameof(DestroyCoinAndAddScore), 0.4f);
+            textMeshProUGUI.text = point;
+            Invoke(nameof(DestroyCoin), 0.4f);
         }
     }
-    void DestroyCoinAndAddScore()
+    void DestroyCoin()
     {
         textMeshProUGUI.text = point;
         Destroy(gameObject);
