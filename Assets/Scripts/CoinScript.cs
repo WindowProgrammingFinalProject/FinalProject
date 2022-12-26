@@ -14,6 +14,7 @@ public class CoinScript : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.mute = !audioSource.mute;
         textMeshProUGUI = GameObject.Find("CoinNumber").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
@@ -26,7 +27,7 @@ public class CoinScript : MonoBehaviour
     {
         if (other.tag == "Player" && canPick)
         {
-            Debug.Log("hitt");
+            audioSource.mute = !audioSource.mute;
             canPick = false;
             audioSource.PlayOneShot(audioClip);
             other.GetComponent<PlayerMovement>().coinNumber += score;

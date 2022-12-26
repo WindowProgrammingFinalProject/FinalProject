@@ -17,6 +17,7 @@ public class MushroomMonStatusController : MonoBehaviour
     float playerAttackRange;
     public LayerMask whatIsPlayer;
     GameObject playerObject;
+    public GameObject coin;
 
     private float lastTime;   //�p�ɾ�
     private float curTime;
@@ -64,7 +65,8 @@ public class MushroomMonStatusController : MonoBehaviour
             gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
             gameObject.GetComponent<NavMeshAgent>().enabled = false; // disable navMeshAgent
             gameObject.GetComponent<MushroomAIScript>().alive = false;
-            Invoke(nameof(DestroyMushroom), 3);
+            Invoke(nameof(DropCoin), 2);
+            Invoke(nameof(DestroyMushroom), 2);
         }
     }
 
@@ -110,5 +112,11 @@ public class MushroomMonStatusController : MonoBehaviour
                 guncanhit = true;
             }
         }
+    }
+
+    private void DropCoin()
+    {
+        Transform c = Instantiate(coin.transform);
+        c.localPosition = transform.position + new Vector3(0, 1, 0);
     }
 }
