@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class MushroomAIScript : MonoBehaviour
+public class ArcherAIScript : MonoBehaviour
 {
 
     public NavMeshAgent agent;
@@ -26,10 +26,13 @@ public class MushroomAIScript : MonoBehaviour
     bool alreadyAttacked = false;
 
     //States
-    [SerializeField] float sightRange, attackRange;
+    [SerializeField] float sightRange, attackRange = 12f;
     public bool playerInSightRange, playerInAttackRange;
-    public int mushroomDamage = 7;
+    public int archerDamage = 7;
     public bool alive = true;
+
+    // bullet
+    [SerializeField] GameObject projectile;
 
     public AudioClip die;
     AudioSource audiosource;
@@ -44,10 +47,10 @@ public class MushroomAIScript : MonoBehaviour
     private void Update()
     {
         //Check for sight and attack range
-        if (alive) playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        if (alive) playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         if (!alive) playerInSightRange = false;
-        if (!alive) playerInSightRange = false;
+        if (!alive) playerInAttackRange = false;
         if (!playerInSightRange && !playerInAttackRange && alive) Patroling();
         if (playerInSightRange && !playerInAttackRange && alive) ChasePlayer();
         if (playerInAttackRange && playerInSightRange && alive) AttackPlayer();
@@ -90,13 +93,20 @@ public class MushroomAIScript : MonoBehaviour
     private void AttackPlayer()
     {
         agent.SetDestination(transform.position); // make sure it wouldn't move
+
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            player.GetComponent<PlayerMovement>().TakeDamage(mushroomDamage);
+            GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
+            bullet.GetComponent<BulletScript>().damage = archerDamage;
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 5f, ForceMode.Impulse);
         }
+
+        
     }
     private void ResetAttack()
     {

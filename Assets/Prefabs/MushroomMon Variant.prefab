@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: -6026303616169709536, guid: b180ba96477c24d7e9badaf033a84756, type: 3}
+      propertyPath: walkPointRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 540151233095399065, guid: b180ba96477c24d7e9badaf033a84756, type: 3}
       propertyPath: m_Name
       value: MushroomMon Variant
