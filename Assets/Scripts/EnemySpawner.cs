@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] float generateX1;
+    [SerializeField] float generateX2;
+    [SerializeField] float generateZ1;
+    [SerializeField] float generateZ2;
     public GameObject[] gameObjects;//kinds of enemy type, now only mushroom
     private bool everentertheroom = false;//has entered the room or not
     GameObject[] enemy = new GameObject[6];//create <= 6 enemy
@@ -21,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < enemyNumber; i++)
             {
                 int randomindex = Random.Range(0, gameObjects.Length);
-                Vector3 randomposition = new Vector3(Random.Range(transform.position.x - 13f, transform.position.x - 1f), -1.5f, Random.Range(transform.position.z - 7f, transform.position.z + 8f));
+                Vector3 randomposition = new Vector3(Random.Range(transform.position.x + generateX1, transform.position.x + generateX2), 0.47f, Random.Range(transform.position.z + generateZ1, transform.position.z + generateZ2));
                 enemy[i] = Instantiate(gameObjects[randomindex], randomposition, Quaternion.identity);
                 //enemy[i].transform.parent = gameObject.transform; // 改用空氣牆座標來決定生成位置
             }//create 3~6 enemy within airwall
