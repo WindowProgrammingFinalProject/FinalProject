@@ -13,10 +13,12 @@ public class MushroomMonStatusController : MonoBehaviour
 
     [SerializeField] int maxHealth = 45;
     bool now_is_sword;
+    bool dropCoin = false;
     int playerDamage;
     float playerAttackRange;
     public LayerMask whatIsPlayer;
     GameObject playerObject;
+    public GameObject coin;
 
     private float lastTime;   //�p�ɾ�
     private float curTime;
@@ -58,13 +60,15 @@ public class MushroomMonStatusController : MonoBehaviour
 
     void StatusCheck()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !dropCoin)
         {
+            dropCoin = true;
             transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
             gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
             gameObject.GetComponent<NavMeshAgent>().enabled = false; // disable navMeshAgent
             gameObject.GetComponent<MushroomAIScript>().alive = false;
-            Invoke(nameof(DestroyMushroom), 3);
+            Invoke(nameof(DropCoin), 2);
+            Invoke(nameof(DestroyMushroom), 2);
         }
     }
 
@@ -110,5 +114,11 @@ public class MushroomMonStatusController : MonoBehaviour
                 guncanhit = true;
             }
         }
+    }
+
+    private void DropCoin()
+    {
+        Transform c = Instantiate(coin.transform);
+        c.localPosition = transform.position + new Vector3(0, 1, 0);
     }
 }

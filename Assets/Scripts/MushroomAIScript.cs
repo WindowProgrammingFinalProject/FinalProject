@@ -89,7 +89,8 @@ public class MushroomAIScript : MonoBehaviour
 
     private void AttackPlayer()
     {
-        // todo: decrease player health
+        agent.SetDestination(transform.position); // make sure it wouldn't move
+        transform.LookAt(player);
         if (!alreadyAttacked)
         {
             alreadyAttacked = true;
