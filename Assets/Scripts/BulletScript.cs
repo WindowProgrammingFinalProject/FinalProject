@@ -24,7 +24,6 @@ public class BulletScript : MonoBehaviour
         {
             GameObject.Find("maincharacter").GetComponent<PlayerMovement>().TakeDamage(damage);
             Destroy(gameObject);
-            Debug.Log("hit player!!");
         }
     }
 }
