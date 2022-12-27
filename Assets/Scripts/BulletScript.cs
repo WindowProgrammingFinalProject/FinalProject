@@ -10,12 +10,7 @@ public class BulletScript : MonoBehaviour
 
     void Start()
     {
-        Invoke(nameof(Destroy), 3);
-    }
-
-    private void Update()
-    {
-        
+        Invoke(nameof(DestroyObject), 3);
     }
 
     void DestroyObject()
