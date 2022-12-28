@@ -28,7 +28,7 @@ public class ArcherAIScript : MonoBehaviour
     //States
     [SerializeField] float sightRange, attackRange = 12f;
     public bool playerInSightRange, playerInAttackRange;
-    public int archerDamage = 7;
+    public int archerDamage = 5;
     public bool alive = true;
 
     // bullet

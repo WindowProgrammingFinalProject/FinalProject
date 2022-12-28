@@ -11,6 +11,7 @@ public class BulletScript : MonoBehaviour
     void Start()
     {
         Invoke(nameof(DestroyObject), 3);
+        gameObject.GetComponent<Renderer>().material.color = Color.green;
     }
 
     void DestroyObject()
@@ -22,8 +23,8 @@ public class BulletScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GameObject.Find("maincharacter").GetComponent<PlayerMovement>().TakeDamage(damage);
-            Destroy(gameObject);
+           other.GetComponent<PlayerMovement>().TakeDamage(damage);
+           Destroy(gameObject);
         }
     }
 }
