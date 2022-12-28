@@ -12,6 +12,23 @@ public class UIButtonController : MonoBehaviour
 
     public void RestartButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("StoreScene");
+    }
+
+    public void MaxHealthButton()
+    {
+
+    }
+    public void MaxShieldButton()
+    {
+
+    }
+    public void MaxSpeedButton()
+    {
+
+    }
+    public void HealUpButton()
+    {
+
     }
 }
