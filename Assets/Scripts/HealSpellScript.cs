@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellScript : MonoBehaviour
+public class HealSpellScript : MonoBehaviour
 {
 
     [SerializeField] Transform flask;
