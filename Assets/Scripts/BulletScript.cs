@@ -23,8 +23,8 @@ public class BulletScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GameObject.Find("maincharacter").GetComponent<PlayerMovement>().TakeDamage(damage);
-            Destroy(gameObject);
+           other.GetComponent<PlayerMovement>().TakeDamage(damage);
+           Destroy(gameObject);
         }
     }
 }
