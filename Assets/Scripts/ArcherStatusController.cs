@@ -62,6 +62,7 @@ public class ArcherStatusController : MonoBehaviour
     {
         if (currentHealth <= 0 && !dropCoin)
         {
+            Debug.Log("die");
             dropCoin = true;
             transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
             gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
@@ -105,7 +106,6 @@ public class ArcherStatusController : MonoBehaviour
         if (other.gameObject.tag == "laser" && guncanhit)
         {
             curTime = Time.time;
-            Debug.Log("hit");
             currentHealth -= GameObject.Find("maincharacter").GetComponent<WeaponChange>().gunDamage;
             healthBar.SetHealth(currentHealth);
             guncanhit = false;
@@ -118,7 +118,10 @@ public class ArcherStatusController : MonoBehaviour
 
     private void DropCoin()
     {
-        Transform c = Instantiate(coin.transform);
-        c.localPosition = transform.position + new Vector3(0, 0, 0);
+        Transform c1 = Instantiate(coin.transform);
+        Transform c2= Instantiate(coin.transform);
+        c1.localPosition = transform.position + new Vector3(0, 1, 0);
+        c2.localPosition = transform.position + new Vector3(1, 1, 0);
+
     }
 }
