@@ -11,6 +11,7 @@ public class BulletScript : MonoBehaviour
     void Start()
     {
         Invoke(nameof(DestroyObject), 3);
+        gameObject.GetComponent<Renderer>().material.color = Color.green;
     }
 
     void DestroyObject()
