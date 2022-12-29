@@ -35,7 +35,7 @@ public class UIButtonController : MonoBehaviour
 
     private void Update()
     {
-        //UpdatePrice();
+        UpdatePrice();
     }
 
     public void ExitButton()
@@ -54,11 +54,11 @@ public class UIButtonController : MonoBehaviour
         if (currentCoin - maxHealthPrice >= 0)
         {
             currentCoin -= maxHealthPrice;
-            if (maxHealth == 15)
+            if (maxHealthPrice == 15)
             {
                 maxHealth = 120;
             }
-            else if (maxHealth == 20)
+            else if (maxHealthPrice == 20)
             {
                 maxHealth = 150;
             }
@@ -70,8 +70,8 @@ public class UIButtonController : MonoBehaviour
         if (currentCoin - maxShieldPrice >= 0)
         {
             currentCoin -= maxShieldPrice;
-            if (maxShieldPrice == 15) maxShield = 20;
-            else if (maxShieldPrice == 20) maxShield = 30;
+            if (maxShieldPrice == 15) maxShield = 30;
+            else if (maxShieldPrice == 20) maxShield = 40;
         }
     }
     public void MaxSpeedButton()
@@ -108,10 +108,15 @@ public class UIButtonController : MonoBehaviour
     {
         if (maxHealth == 100) maxHealthPrice = 15;
         else if (maxHealth == 120) maxHealthPrice = 20;
+        else if (maxHealth == 150) maxHealthPrice = 99999;
+
         if (maxShield == 20) maxShieldPrice = 15;
         else if (maxShield == 30) maxShieldPrice = 20;
+        else if (maxShield == 40) maxShieldPrice = 99999;
+
         if (speed == 5) maxSpeedPrice = 15;
         else if (speed == 7) maxSpeedPrice = 20;
+        else if (speed == 9) maxSpeedPrice = 99999;
 
         // update ui
         maxHealthPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxHealthPrice.ToString();
