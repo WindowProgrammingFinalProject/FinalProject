@@ -34,11 +34,14 @@ public class MushroomAIScript : MonoBehaviour
     public AudioClip die;
     AudioSource audiosource;
 
+    Animation animation;//yucong add animation
+
     private void Awake()
     {
         player = GameObject.Find("maincharacter").transform;
         agent = GetComponent<NavMeshAgent>();
         audiosource = GetComponent<AudioSource>();
+        animation = GetComponent<Animation>();//yucong get animation componemt
     }
 
     private void Update()
@@ -93,6 +96,7 @@ public class MushroomAIScript : MonoBehaviour
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
+            animation.CrossFade("Attack");//yucong let mushroom have attack animation
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
             player.GetComponent<PlayerMovement>().TakeDamage(mushroomDamage);
