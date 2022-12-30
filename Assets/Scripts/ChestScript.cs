@@ -9,6 +9,7 @@ public class ChestScript : MonoBehaviour
     public GameObject healFlask;
     public GameObject boxOpen;
     public GameObject boxClose;
+    public GameObject canvas;
     bool guncanhit = true;
     int playerDamage;
     float playerAttackRange;
@@ -25,7 +26,7 @@ public class ChestScript : MonoBehaviour
     void Start()
     {
         SetMaxHealth();
-        boxOpen.SetActive(false);
+        boxOpen.GetComponent<Renderer>().enabled = false;
         //audiosource = GetComponent<AudioSource>();
     }
 
@@ -95,7 +96,7 @@ public class ChestScript : MonoBehaviour
     }
     private void DropHealFlask()
     {
-        Transform h = Instantiate(coin.transform);
+        Transform h = Instantiate(healFlask.transform);
         h.localPosition = transform.position += new Vector3(0, 1, 0);
     }
     void StatusCheck()
@@ -111,12 +112,10 @@ public class ChestScript : MonoBehaviour
     }
     void ShowOpenBox()
     {
-        Vector3 pos = boxClose.transform.position;
+        boxOpen.GetComponent<Renderer>().enabled = true;
         boxClose.SetActive(false);
-        Destroy(boxClose);
-        boxOpen.SetActive(true);
-        boxOpen.transform.position = pos;
-        boxOpen.transform.position += new Vector3(0, -1, 0); 
+        boxClose.GetComponent<Renderer>().enabled = false;
+        boxOpen.transform.position += new Vector3(0, -1, 0);
     }
 }
 

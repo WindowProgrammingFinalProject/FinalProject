@@ -95,7 +95,6 @@ public class UIButtonController : MonoBehaviour
     }
     public void GoToNextLevelButton()
     {
-        PlayerPrefs.SetInt("coin", currentCoin);
         PlayerPrefs.SetInt("coin", currentCoin); // store the coin number, this will be used in other scene
         PlayerPrefs.SetInt("currentHealth", currentHealth); // same as above
         PlayerPrefs.SetInt("maxHealth", maxHealth);

@@ -49,9 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 4453270426187971513, guid: 1fc51404699944843b8770cab9ea10c3, type: 3}
-  healFlask: {fileID: 0}
+  healFlask: {fileID: 1458735619849832, guid: 54a718ec0ce214a5887341fd3d4d896a, type: 3}
   boxOpen: {fileID: 5996293708425645731}
   boxClose: {fileID: 5996293709494968260}
+  canvas: {fileID: 0}
   maxHealth: 100
   healthBar: {fileID: 7438645496620623064}
   whatIsPlayer:
