@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class StoreControllerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public int currentCoin;
+
     void Start()
     {
-        
+        currentCoin = PlayerPrefs.GetInt("coin");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

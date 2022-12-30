@@ -9,6 +9,7 @@ public class ChestScript : MonoBehaviour
     public GameObject healFlask;
     public GameObject boxOpen;
     public GameObject boxClose;
+    public GameObject canvas;
     bool guncanhit = true;
     int playerDamage;
     float playerAttackRange;
@@ -95,7 +96,7 @@ public class ChestScript : MonoBehaviour
     }
     private void DropHealFlask()
     {
-        Transform h = Instantiate(coin.transform);
+        Transform h = Instantiate(healFlask.transform);
         h.localPosition = transform.position += new Vector3(0, 1, 0);
     }
     void StatusCheck()
@@ -113,10 +114,11 @@ public class ChestScript : MonoBehaviour
     {
         Vector3 pos = boxClose.transform.position;
         boxClose.SetActive(false);
+        canvas.SetActive(false);
         Destroy(boxClose);
         boxOpen.SetActive(true);
         boxOpen.transform.position = pos;
-        boxOpen.transform.position += new Vector3(0, -1, 0); 
+        boxOpen.transform.position += new Vector3(0, -1, 0);
     }
 }
 
