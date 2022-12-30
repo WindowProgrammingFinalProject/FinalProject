@@ -26,6 +26,8 @@ public class MushroomMonStatusController : MonoBehaviour
     public AudioClip die;
     AudioSource audiosource;
 
+    Animation animation;//yucong add animation
+
     bool guncanhit = true;
 
     void Start()
@@ -33,6 +35,7 @@ public class MushroomMonStatusController : MonoBehaviour
         SetMaxHealth();
         playerObject = GameObject.Find("maincharacter");
         audiosource = GetComponent<AudioSource>();
+        animation = GetComponent<Animation>();//yucong get animation component
     }
 
     void Update()
@@ -62,6 +65,7 @@ public class MushroomMonStatusController : MonoBehaviour
     {
         if (currentHealth <= 0 && !dropCoin)
         {
+            animation.CrossFade("Death");//yucong let mushroom have death animation
             dropCoin = true;
             transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
             gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
@@ -96,6 +100,7 @@ public class MushroomMonStatusController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && IsSword() && IsCloseToPlayer())
         {
             //GameObject.Find("maincharacter").transform.LookAt(transform); // 玩家轉向敵人，但感覺有點生硬
+            animation.CrossFade("Damage");//yucong let mushroom have damage animation
             TakeDamage(playerDamage);
         }
     }
