@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpHeight = 3.5f;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         InitializeHealthStatus(); // initialize player's health
         InitializeShieldStatus(); // initialize player's shield
 
-        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; // 鼠標消失
     }
 
@@ -73,7 +73,8 @@ public class PlayerMovement : MonoBehaviour
                 characterController.Move(moveDir.normalized * speed * Time.deltaTime);
                 myAnimator.SetBool("run", true);
             }
-        } else
+        }
+        else
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, cam.eulerAngles.y, transform.eulerAngles.z); // when using gun
             if (direction.magnitude >= 0.1f)
@@ -124,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         }
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
-        
+
     }
     public void TakeDamage(int damage)
     {
@@ -141,10 +142,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlayerAliveCheck()
     {
-        
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("GameOverScene");
         }
     }
@@ -152,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
     // switch scene to store and carry informations such as health, speed...
     void GoToStoreScene()
     {
+        Debug.Log("store");
         PlayerPrefs.SetInt("coin", coinNumber); // store the coin number, this will be used in other scene
         PlayerPrefs.SetInt("currentHealth", currentHealth); // same as above
         PlayerPrefs.SetInt("maxHealth", maxHealth);
@@ -177,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         shieldBar.SetMaxHealth(maxShield);
         currentShield = maxShield;
         shieldBar.SetHealth(currentShield);
-        
+
     }
 
     // shield recover system

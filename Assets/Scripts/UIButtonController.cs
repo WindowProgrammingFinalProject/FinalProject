@@ -30,24 +30,16 @@ public class UIButtonController : MonoBehaviour
         maxHealth = PlayerPrefs.GetInt("maxHealth");
         maxShield = PlayerPrefs.GetInt("maxShield");
         speed = PlayerPrefs.GetFloat("speed");
-        UpdatePrice();
+        //UpdatePrice();
     }
 
     private void Update()
     {
-        UpdatePrice();
+        if (currentHealth > 0) UpdatePrice();
+
     }
 
-    public void ExitButton()
-    {
-        Application.Quit();
-    }
-
-    public void RestartButton()
-    {
-        SceneManager.LoadScene("StoreScene");
-    }
-
+    
     public void MaxHealthButton()
     {
         UpdatePrice();

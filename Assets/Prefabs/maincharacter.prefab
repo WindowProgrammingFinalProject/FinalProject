@@ -1874,9 +1874,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sword: {fileID: 6981101811308273058}
-  gun: {fileID: 0}
-  raycast: {fileID: 6981101812500194042}
-  laser: {fileID: 6981101812841509881}
+  gun_right: {fileID: 0}
+  gun_left: {fileID: 0}
+  raycast_right: {fileID: 0}
+  raycast_left: {fileID: 0}
   now_is_sword: 1
   swordDamage: 15
   swordAttackRange: 1.5
@@ -1900,10 +1901,11 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
   characterController: {fileID: 6981101811974022072}
-  cam: {fileID: 851857190081416205, guid: 124e07b52d7ac432a91a5e4276275f24, type: 3}
+  cam: {fileID: 7086299407181441564, guid: 124e07b52d7ac432a91a5e4276275f24, type: 3}
   IsPause: 0
   healthBar: {fileID: 3750511064500721308, guid: 5ae09cdec6b4d4e1bb64cc7df807075b, type: 3}
   shieldBar: {fileID: 8575060860930851845, guid: 019d3ab88080942988d809fcdf4fcb00, type: 3}
+  textMeshProUGUI: {fileID: 0}
   currentHealth: 0
   currentShield: 0
   maxShield: 20
