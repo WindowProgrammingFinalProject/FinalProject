@@ -26,7 +26,7 @@ public class ChestScript : MonoBehaviour
     void Start()
     {
         SetMaxHealth();
-        boxOpen.SetActive(false);
+        boxOpen.GetComponent<Renderer>().enabled = false;
         //audiosource = GetComponent<AudioSource>();
     }
 
@@ -112,12 +112,9 @@ public class ChestScript : MonoBehaviour
     }
     void ShowOpenBox()
     {
-        Vector3 pos = boxClose.transform.position;
+        boxOpen.GetComponent<Renderer>().enabled = true;
         boxClose.SetActive(false);
-        canvas.SetActive(false);
-        Destroy(boxClose);
-        boxOpen.SetActive(true);
-        boxOpen.transform.position = pos;
+        boxClose.GetComponent<Renderer>().enabled = false;
         boxOpen.transform.position += new Vector3(0, -1, 0);
     }
 }
