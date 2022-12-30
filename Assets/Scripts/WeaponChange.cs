@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class WeaponChange : MonoBehaviour
 {
+    // test
 
     public GameObject sword;
     public GameObject gun_right;
@@ -24,7 +25,7 @@ public class WeaponChange : MonoBehaviour
     public int swordDamage = 15;
     public float swordAttackRange = 1.5f;
 
-    public int gunDamage = 15;
+    public int gunDamage = 7;
     private bool guncanshot = true;
 
     public AudioClip shot;

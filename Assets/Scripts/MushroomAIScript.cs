@@ -99,7 +99,8 @@ public class MushroomAIScript : MonoBehaviour
             animation.CrossFade("Attack");//yucong let mushroom have attack animation
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            player.GetComponent<PlayerMovement>().TakeDamage(mushroomDamage);
+            Debug.Log("damage");
+            player.GetComponent<PlayerController>().TakeDamage(mushroomDamage);
         }
     }
     private void ResetAttack()

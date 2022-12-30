@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -208,7 +208,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 637246797}
-        m_TargetAssemblyTypeName: UIButtonController, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameOverSceneController, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
         m_Arguments:
@@ -582,22 +582,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 637246795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9edbaec81b2d34e398ad9d52046ff5e8, type: 3}
+  m_Script: {fileID: 11500000, guid: e6923db1a8dcb4e5a83651bd0aaa22f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPriceText: {fileID: 0}
-  maxShieldPriceText: {fileID: 0}
-  maxSpeedPriceText: {fileID: 0}
-  coinText: {fileID: 0}
-  maxHealthPrice: 15
-  maxShieldPrice: 15
-  maxSpeedPrice: 15
-  HealUpPrice: 15
-  currentCoin: 0
-  currentHealth: 0
-  maxHealth: 0
-  maxShield: 0
-  speed: 0
 --- !u!1 &648112572
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +754,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 637246797}
-        m_TargetAssemblyTypeName: UIButtonController, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameOverSceneController, Assembly-CSharp
         m_MethodName: RestartButton
         m_Mode: 1
         m_Arguments:

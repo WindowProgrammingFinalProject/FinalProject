@@ -24,7 +24,7 @@ public class HealSpellScript : MonoBehaviour
     {
         if (other.name == "maincharacter")
         {            
-            other.GetComponent<PlayerMovement>().addHealth();
+            other.GetComponent<PlayerController>().addHealth();
             audioSource.Play();
             Invoke(nameof(DestroyObject), 0.3f);
         }

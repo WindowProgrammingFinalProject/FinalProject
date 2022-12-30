@@ -30,8 +30,8 @@ public class CoinScript : MonoBehaviour
             audioSource.mute = !audioSource.mute;
             canPick = false;
             audioSource.PlayOneShot(audioClip);
-            other.GetComponent<PlayerMovement>().coinNumber += score;
-            point = (other.GetComponent<PlayerMovement>().coinNumber).ToString();
+            other.GetComponent<PlayerController>().coinNumber += score;
+            point = (other.GetComponent<PlayerController>().coinNumber).ToString();
             GetComponent<MeshRenderer>().enabled = false;
             textMeshProUGUI.text = point;
             Invoke(nameof(DestroyCoin), 0.4f);
