@@ -57,7 +57,7 @@ Material:
     - _ColorMask: 15
     - _FresnelScale: 0.75
     - _GerstnerIntensity: 1
-    - _InvFade: 1
+    - _InvFade: 0.33
     - _ReflDistort: 0.44
     - _RefrDistort: 0.4
     - _Shininess: 200
@@ -88,6 +88,6 @@ Material:
     - _ReflectionColor: {r: 0.54, g: 0.95, b: 0.99, a: 0.5}
     - _RefrColor: {r: 0.34, g: 0.85, b: 0.92, a: 1}
     - _SpecularColor: {r: 0.72, g: 0.72, b: 0.72, a: 1}
-    - _TintColor: {r: 0.4705882, g: 0.4705882, b: 0.4705882, a: 0.14509805}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 0.14509805}
     - _WorldLightDir: {r: 0, g: 0.1, b: -0.5, a: 0}
   m_BuildTextureStacks: []

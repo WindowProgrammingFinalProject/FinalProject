@@ -8,9 +8,10 @@ public class WeaponChange : MonoBehaviour
 {
 
     public GameObject sword;
-    public GameObject gun;
-    public GameObject raycast; ///�˷ǽu
-    public GameObject laser;   ///�p�g��
+    public GameObject gun_right;
+    public GameObject gun_left;
+    public GameObject raycast_right; ///�˷ǽu
+    public GameObject raycast_left;
 
     private float lastTime;   //�p�ɾ�
     private float curTime;
@@ -32,9 +33,10 @@ public class WeaponChange : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>(); // Animator
-        gun.SetActive(false);
-        raycast.SetActive(false);     /////���]�������
-        laser.SetActive(false);
+        gun_right.SetActive(false);
+        gun_left.SetActive(false);
+        raycast_right.SetActive(false);     /////���]�������
+        raycast_left.SetActive(false);
         audiosource = GetComponent<AudioSource>();
         //laser = GameObject.Find("laser");
         //audiosource = GetComponent<AudioSource>();
@@ -48,29 +50,32 @@ public class WeaponChange : MonoBehaviour
 
         {                                                  ///////////https://www.cg.com.tw/UnityCSharp/Content/SetActive.php
             sword.SetActive(false);
-            gun.SetActive(true);
-            raycast.SetActive(true);
+            gun_right.SetActive(true);
+            gun_left.SetActive(true);
+            raycast_right.SetActive(false);     /////���]�������
+            raycast_left.SetActive(false);
             now_is_sword = false;
         }
         else if (Input.GetKeyDown(KeyCode.R) && !now_is_sword)
         {
-            sword.SetActive(true);
-            gun.SetActive(false);
-            raycast.SetActive(false);
+            gun_right.SetActive(false);
+            gun_left.SetActive(false);
+            raycast_right.SetActive(false);     /////���]�������
+            raycast_left.SetActive(false);
             now_is_sword = true;
         }
         if (Input.GetMouseButtonDown(0) && !now_is_sword && guncanshot)
         {
             audiosource.PlayOneShot(shot);
-            laser.SetActive(true);
-            raycast.SetActive(false);
+            raycast_right.SetActive(true);     /////���]�������
+            raycast_left.SetActive(true);
             lastTime = Time.time;      //�o�̧Q��start�}�l�ɶ}�l�p��
             guncanshot = false;
         }
         if (curTime - lastTime >= 0.5 && !guncanshot)   //�ɶ��t�j��0.5���L��
         {
-            laser.SetActive(false);
-            raycast.SetActive(true);
+            raycast_right.SetActive(false);    /////���]�������
+            raycast_left.SetActive(false);
             guncanshot = true;
         }
     }

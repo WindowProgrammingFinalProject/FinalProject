@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Floor
+  - Wall
+  - OuterCorner
+  - Room
   - laser
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -12,8 +17,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Player
-  - enemy
+  - 
+  - 
   - 
   - 
   - 
