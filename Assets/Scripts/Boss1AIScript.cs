@@ -55,7 +55,6 @@ public class Boss1AIScript : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange && alive) Patroling();
         if (playerInSightRange && !playerInAttackRange && alive) ChasePlayer();
         if (playerInAttackRange && playerInSightRange && alive) AttackPlayer();
-        attack = false;
         animator.SetBool("attack", attack);
     }
 
@@ -100,11 +99,16 @@ public class Boss1AIScript : MonoBehaviour
         {
             attack = true;
             animator.SetBool("attack", attack);
+            Invoke(nameof(attackVariableChange), 0.7f);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
             Debug.Log("damage");
             player.GetComponent<PlayerController>().TakeDamage(mushroomDamage);
         }
+    }
+    private void attackVariableChange()
+    {
+        attack = !attack;
     }
     private void ResetAttack()
     {

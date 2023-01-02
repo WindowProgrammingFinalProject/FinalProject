@@ -45,7 +45,6 @@ public class Boss1StatusController : MonoBehaviour
     {
         PlayerAttackCheck();
         StatusCheck(); // check if the mushroom die
-        damage = false;
         animator.SetBool("damage", damage);
         animator.SetBool("run", run);
     }
@@ -74,7 +73,7 @@ public class Boss1StatusController : MonoBehaviour
             dead = true;
             animator.SetBool("dead", dead);
             dropCoin = true;
-            transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
+            //transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
             gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
             gameObject.GetComponent<NavMeshAgent>().enabled = false; // disable navMeshAgent
             gameObject.GetComponent<Boss1AIScript>().alive = false;
@@ -109,8 +108,14 @@ public class Boss1StatusController : MonoBehaviour
             //GameObject.Find("maincharacter").transform.LookAt(transform); // 玩家轉向敵人，但感覺有點生硬
             damage = true;
             animator.SetBool("damage", damage);
+            Invoke(nameof(damageVariableChange), 0.8f);
             TakeDamage(playerDamage);
         }
+    }
+
+    private void damageVariableChange()
+    {
+        damage = !damage;
     }
 
     private void OnTriggerEnter(Collider other)
