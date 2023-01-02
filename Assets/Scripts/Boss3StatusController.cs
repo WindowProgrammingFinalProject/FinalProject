@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(AudioSource))]
-
-public class Boss1StatusController : MonoBehaviour
+public class Boss3StatusController : MonoBehaviour
 {
     private int currentHealth;
     public BarScript healthBar;
@@ -29,9 +27,9 @@ public class Boss1StatusController : MonoBehaviour
     bool guncanhit = true;
 
     //variable for animator
-    [SerializeField]private bool dead = false;
-    [SerializeField]private bool damage = false;
-    [SerializeField]private bool run = true;
+    [SerializeField] private bool dead = false;
+    [SerializeField] private bool damage = false;
+    [SerializeField] private bool run = true;
 
     void Start()
     {
@@ -76,7 +74,7 @@ public class Boss1StatusController : MonoBehaviour
             //transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0)); // rotate the enemy's corpse (lying on the ground)
             gameObject.GetComponent<CapsuleCollider>().enabled = false; // disable collider
             gameObject.GetComponent<NavMeshAgent>().enabled = false; // disable navMeshAgent
-            gameObject.GetComponent<Boss1AIScript>().alive = false;
+            gameObject.GetComponent<Boss3AIScript>().alive = false;
             Invoke(nameof(DropCoin), 2);
             Invoke(nameof(DestroyMushroom), 2);
         }
@@ -109,12 +107,10 @@ public class Boss1StatusController : MonoBehaviour
             TakeDamage(playerDamage);
         }
     }
-
     private void damageVariableFalse()
     {
         damage = false;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "laser" && guncanhit)
