@@ -10,6 +10,7 @@ TagManager:
   - Room
   - laser
   - Ground
+  - Collide
   layers:
   - Default
   - TransparentFX
