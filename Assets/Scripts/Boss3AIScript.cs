@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-[RequireComponent(typeof(AudioSource))]
-
-public class Boss1AIScript : MonoBehaviour
+public class Boss3AIScript : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
@@ -35,7 +32,7 @@ public class Boss1AIScript : MonoBehaviour
     Animator animator;
 
     //variable for animator
-    [SerializeField]private bool attack = false;
+    [SerializeField] private bool attack = false;
 
     private void Awake()
     {
