@@ -12,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
     private bool everentertheroom = false;//has entered the room or not
     GameObject[] enemy = new GameObject[6];//create <= 6 enemy
     int enemyNumber;//enemy number
+    [SerializeField]int minNumOfEnemy = 3;
+    [SerializeField]int maxNumOfEnemy = 6;
 
     //when player enter the room, create 3~6 enemy
     private void OnTriggerEnter(Collider other)
@@ -20,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
         {
 
             everentertheroom = true;//has entered thr room
-            enemyNumber = Random.Range(3, 7);//random enemy number
+            enemyNumber = Random.Range(minNumOfEnemy, maxNumOfEnemy + 1);//random enemy number
 
             for (int i = 0; i < enemyNumber; i++)
             {
