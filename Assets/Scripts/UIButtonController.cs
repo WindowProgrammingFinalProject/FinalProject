@@ -110,9 +110,9 @@ public class UIButtonController : MonoBehaviour
         else if (speed == 9) maxSpeedPrice = 99999;
 
         // update ui
-        maxHealthPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxHealthPrice.ToString();
-        maxShieldPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxShieldPrice.ToString();
-        maxSpeedPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxSpeedPrice.ToString();
+        maxHealthPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxHealthPrice.ToString() + "$";
+        maxShieldPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxShieldPrice.ToString() + "$";
+        maxSpeedPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxSpeedPrice.ToString() + "$";
         coinText.GetComponent<TMPro.TextMeshProUGUI>().text = currentCoin.ToString();
     }
 }
