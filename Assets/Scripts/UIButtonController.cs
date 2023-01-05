@@ -25,6 +25,8 @@ public class UIButtonController : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         currentCoin = PlayerPrefs.GetInt("coin");
         currentHealth = PlayerPrefs.GetInt("currentHealth");
         maxHealth = PlayerPrefs.GetInt("maxHealth");

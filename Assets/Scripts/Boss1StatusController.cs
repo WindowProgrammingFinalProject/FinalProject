@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -79,8 +80,10 @@ public class Boss1StatusController : MonoBehaviour
             gameObject.GetComponent<Boss1AIScript>().alive = false;
             Invoke(nameof(DropCoin), 2);
             Invoke(nameof(DestroyMushroom), 2);
+            GameObject.Find("SceneControllerObject").GetComponent<SceneController>().LateGoToStore();
         }
     }
+
 
     void DestroyMushroom()
     {
