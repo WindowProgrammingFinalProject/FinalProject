@@ -369,7 +369,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  coin: {fileID: 0}
+  coin: {fileID: 4453270426187971513, guid: 1fc51404699944843b8770cab9ea10c3, type: 3}
   die: {fileID: 8300000, guid: a4a02ad4f27a91f45a0f67ad01604358, type: 3}
   dead: 0
   damage: 0
