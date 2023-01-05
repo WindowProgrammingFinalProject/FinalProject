@@ -10,6 +10,7 @@ public class BossAirwall : MonoBehaviour
     public GameObject smal11;
     public GameObject small2;
     public GameObject small3;
+    public GameObject small4;
 
 
 
@@ -28,6 +29,7 @@ public class BossAirwall : MonoBehaviour
             smal11.SetActive(true);
             small2.SetActive(true);
             small3.SetActive(true);
+            small4.SetActive(true);
 
         }//judge who enter the room and has entered the room or not
     }//enter the room
