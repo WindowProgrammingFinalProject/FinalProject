@@ -398,7 +398,7 @@ MonoBehaviour:
   walkPointRange: 10
   timeBetweenAttacks: 1
   sightRange: 10
-  attackRange: 1.5
+  attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
   mushroomDamage: 20
