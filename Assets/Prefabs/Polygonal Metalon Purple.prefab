@@ -779,6 +779,7 @@ GameObject:
   - component: {fileID: 6050461831895813678}
   - component: {fileID: 9183744950565604962}
   - component: {fileID: 7851629315801023090}
+  - component: {fileID: 7091838669810120834}
   m_Layer: 0
   m_Name: Polygonal Metalon Purple
   m_TagString: Untagged
@@ -1074,6 +1075,19 @@ MonoBehaviour:
     m_Bits: 64
   coin: {fileID: 4453270426187971513, guid: 1fc51404699944843b8770cab9ea10c3, type: 3}
   die: {fileID: 8300000, guid: a4a02ad4f27a91f45a0f67ad01604358, type: 3}
+--- !u!65 &7091838669810120834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462720695320296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0490198, y: 0.36459982, z: 2.4535863}
+  m_Center: {x: -0.046754837, y: 0.3177001, z: 0.053846955}
 --- !u!1 &1486048802852170
 GameObject:
   m_ObjectHideFlags: 0

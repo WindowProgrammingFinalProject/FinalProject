@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +26,12 @@ public class PlayerController : MonoBehaviour
     public int coinNumber = 0;
     private Animator myAnimator;
 
+    private float lastTime;   
+    private float curTime;
+    private bool skill = false;
+    private bool first = true;
+
+
     // test
     // Start is called before the first frame update
     void Start()
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        curTime = Time.time;
         myAnimator.SetBool("run", false);
         Movement();
         PauseAndResumeTheGame();
@@ -53,6 +59,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.P))
         {
             GoToStoreScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && skill == false && (curTime - lastTime >= 20 || first ))
+        {
+            speed += 12;
+            skill = true;
+            lastTime = Time.time;
+            first = false;
+        }
+        if(skill == true &&　curTime - lastTime >= 5)
+        {
+            skill = false;
+            speed -= 12;
+            lastTime = Time.time;
         }
     }
 
