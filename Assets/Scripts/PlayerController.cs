@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
             coinNumber = 0;
             maxHealth = 100;
             maxShield = 20;
-            speed = 5;
+            speed = 9;
         }
         textMeshProUGUI.text = coinNumber.ToString();
     }
