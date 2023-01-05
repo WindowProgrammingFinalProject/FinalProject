@@ -59,12 +59,23 @@ public class WeaponChange : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R) && !now_is_sword)
         {
+            sword.SetActive(true);
             gun_right.SetActive(false);
             gun_left.SetActive(false);
             raycast_right.SetActive(false);     /////���]�������
             raycast_left.SetActive(false);
             now_is_sword = true;
         }
+        if (Input.GetMouseButtonDown(0) && now_is_sword )
+        {
+            myAnimator.SetBool("nearattack",true);
+        }
+
+        if (Input.GetMouseButtonUp(0) && now_is_sword)
+        {
+            myAnimator.SetBool("nearattack", false);
+        }
+
         if (Input.GetMouseButtonDown(0) && !now_is_sword && guncanshot)
         {
             audiosource.PlayOneShot(shot);
@@ -73,7 +84,7 @@ public class WeaponChange : MonoBehaviour
             lastTime = Time.time;      //�o�̧Q��start�}�l�ɶ}�l�p��
             guncanshot = false;
         }
-        if (curTime - lastTime >= 0.5 && !guncanshot)   //�ɶ��t�j��0.5���L��
+        if (curTime - lastTime >= 0.7 && !guncanshot)   //�ɶ��t�j��0.5���L��
         {
             raycast_right.SetActive(false);    /////���]�������
             raycast_left.SetActive(false);
