@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // switch scene to store and carry informations such as health, speed...
-    void GoToStoreScene()
+    public void GoToStoreScene()
     {
         Debug.Log("store");
         PlayerPrefs.SetInt("coin", coinNumber); // store the coin number, this will be used in other scene

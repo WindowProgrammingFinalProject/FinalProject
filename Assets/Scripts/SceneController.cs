@@ -17,8 +17,16 @@ public class SceneController : MonoBehaviour
 
     void GoToStore()
     {
-        Debug.Log("go to store");
-        SceneManager.LoadScene("StoreScene");
+        GameObject.Find("maincharacter").GetComponent<PlayerController>().GoToStoreScene();
     }
 
+    void GoToVictoryScene()
+    {
+        SceneManager.LoadScene("VictoryScene");
+    }
+
+    public void LateGoToVictoryScene()
+    {
+        Invoke(nameof(GoToVictoryScene), 5);
+    }
 }
