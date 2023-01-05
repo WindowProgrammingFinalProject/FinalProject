@@ -20,7 +20,7 @@ public class Boss2Attack : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    [SerializeField] float timeBetweenAttacks = 0.5f;
+    [SerializeField] float timeBetweenAttacks = 1;
     bool alreadyAttacked = false;
 
     //States
@@ -29,19 +29,24 @@ public class Boss2Attack : MonoBehaviour
     public int archerDamage = 5;
     public bool alive = true;
 
+    private Animator myAnimator;
+
     // bullet
     [SerializeField] GameObject projectile;
 
     public AudioClip die;
     AudioSource audiosource;
 
-    private Animator myAnimator;
+    private int attackNumber;
+    [SerializeField] private int maxAttackNumber = 30;
+    [SerializeField] private int attackStopTime = 17;
 
     private void Awake()
     {
         player = GameObject.Find("maincharacter").transform;
         agent = GetComponent<NavMeshAgent>();
         audiosource = GetComponent<AudioSource>();
+        myAnimator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -52,7 +57,7 @@ public class Boss2Attack : MonoBehaviour
         if (!alive) playerInSightRange = false;
         if (!alive) playerInAttackRange = false;
         if (!playerInSightRange && !playerInAttackRange && alive) Patroling();
-        if (playerInSightRange && !playerInAttackRange && alive)  ChasePlayer();  //else myAnimator.SetBool("FarAttack", false);
+        if (playerInSightRange && !playerInAttackRange && alive) ChasePlayer();
         if (playerInAttackRange && playerInSightRange && alive) AttackPlayer();
 
     }
@@ -87,7 +92,6 @@ public class Boss2Attack : MonoBehaviour
 
     private void ChasePlayer()
     {
-        myAnimator.SetBool("idle", true);
         agent.SetDestination(player.position);
     }
 
@@ -96,23 +100,34 @@ public class Boss2Attack : MonoBehaviour
         agent.SetDestination(transform.position); // make sure it wouldn't move
 
         transform.LookAt(player);
-        if (!alreadyAttacked)
+        if (!alreadyAttacked )
         {
             alreadyAttacked = true;
-            myAnimator.SetBool("FarAttack", true);
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            //myAnimator.SetBool("FarAttact", true);      /////why it fail
+            //Debug.Log(myAnimator.GetBool("FarAttact"));      /////but it can still get bool¡H
             GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
             bullet.GetComponent<BulletScript>().damage = archerDamage;
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 5f, ForceMode.Impulse);
+            attackNumber++;
+            Debug.Log("(1)attackNumber" + attackNumber);
+            if(attackNumber <= maxAttackNumber) Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            else
+            {
+                attackNumber = 0;
+                Debug.Log("(2)attackNumber" + attackNumber);
+                playerInSightRange = false; playerInAttackRange = false;  ///not work ¡H
+                Invoke(nameof(ResetAttack), timeBetweenAttacks * attackStopTime);
+            }
         }
-
 
     }
     private void ResetAttack()
     {
+        //myAnimator.SetBool("FarAttact", false);
         alreadyAttacked = false;
-        myAnimator.SetBool("FarAttack", false);
+        playerInSightRange = true; playerInAttackRange = true;
+        Debug.Log("alreadyAttacked" + alreadyAttacked);
     }
 }
