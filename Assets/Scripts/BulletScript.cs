@@ -26,5 +26,9 @@ public class BulletScript : MonoBehaviour
            other.GetComponent<PlayerController>().TakeDamage(damage);
            Destroy(gameObject);
         }
+        if (other.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
     }
 }
