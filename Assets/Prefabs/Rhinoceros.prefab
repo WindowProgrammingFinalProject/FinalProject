@@ -74,11 +74,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2502,10 +2502,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.77817345
-  m_Height: 4.3000236
+  m_Radius: 1.210679
+  m_Height: 4.5953326
   m_Direction: 1
-  m_Center: {x: 0, y: 2.0786808, z: 0.27817345}
+  m_Center: {x: -0.08568859, y: 2.2263353, z: -0.035158157}
 --- !u!82 &4229585422398551105
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2526,7 +2526,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.0681145
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -2669,6 +2669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4229585421663418106}
   maxHealth: 1500
+  dropCoinNumber: 30
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64

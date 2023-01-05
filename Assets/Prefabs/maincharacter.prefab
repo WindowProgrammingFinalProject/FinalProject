@@ -1880,7 +1880,7 @@ MonoBehaviour:
   raycast_left: {fileID: 0}
   now_is_sword: 1
   swordDamage: 15
-  swordAttackRange: 1.5
+  swordAttackRange: 2
   gunDamage: 15
   shot: {fileID: 8300000, guid: c72937ce761090b429443d4157fa9498, type: 3}
 --- !u!114 &6981101811974022075

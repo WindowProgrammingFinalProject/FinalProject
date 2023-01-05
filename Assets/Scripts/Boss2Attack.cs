@@ -20,13 +20,13 @@ public class Boss2Attack : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    [SerializeField] float timeBetweenAttacks = 1;
+    [SerializeField] float timeBetweenAttacks = 0.5f;
     bool alreadyAttacked = false;
 
     //States
     [SerializeField] float sightRange, attackRange = 12f;
     public bool playerInSightRange, playerInAttackRange;
-    public int archerDamage = 5;
+    public int archerDamage = 8;
     public bool alive = true;
 
     private Animator myAnimator;
@@ -38,7 +38,7 @@ public class Boss2Attack : MonoBehaviour
     AudioSource audiosource;
 
     private int attackNumber;
-    [SerializeField] private int maxAttackNumber = 30;
+    [SerializeField] private int maxAttackNumber = 50;
     [SerializeField] private int attackStopTime = 17;
 
     private void Awake()
@@ -104,20 +104,18 @@ public class Boss2Attack : MonoBehaviour
         {
             alreadyAttacked = true;
             //myAnimator.SetBool("FarAttact", true);      /////why it fail
-            //Debug.Log(myAnimator.GetBool("FarAttact"));      /////but it can still get bool¡H
+            //Debug.Log(myAnimator.GetBool("FarAttact"));      /////but it can still get boolï¿½H
             GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
             bullet.GetComponent<BulletScript>().damage = archerDamage;
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 5f, ForceMode.Impulse);
             attackNumber++;
-            Debug.Log("(1)attackNumber" + attackNumber);
             if(attackNumber <= maxAttackNumber) Invoke(nameof(ResetAttack), timeBetweenAttacks);
             else
             {
                 attackNumber = 0;
-                Debug.Log("(2)attackNumber" + attackNumber);
-                playerInSightRange = false; playerInAttackRange = false;  ///not work ¡H
+                playerInSightRange = false; playerInAttackRange = false;  ///not work ï¿½H
                 Invoke(nameof(ResetAttack), timeBetweenAttacks * attackStopTime);
             }
         }

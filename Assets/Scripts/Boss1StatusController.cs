@@ -12,6 +12,7 @@ public class Boss1StatusController : MonoBehaviour
     public BarScript healthBar;
 
     [SerializeField] int maxHealth = 45;
+    [SerializeField] public int dropCoinNumber = 20;
     bool now_is_sword;
     bool dropCoin = false;
     int playerDamage;
@@ -141,5 +142,6 @@ public class Boss1StatusController : MonoBehaviour
     {
         Transform c = Instantiate(coin.transform);
         c.localPosition = transform.position + new Vector3(0, 1, 0);
+        for (int i = 0; i < dropCoinNumber; i++) Instantiate(coin.transform).localPosition = transform.position + new Vector3(i * 0.1f, 1, 0);
     }
 }

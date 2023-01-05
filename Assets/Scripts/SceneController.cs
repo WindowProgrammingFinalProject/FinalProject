@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour
 
     public void LateGoToStore()
     {
-        Invoke(nameof(GoToStore), 5);
+        Invoke(nameof(GoToStore), 8);
     }
 
     void GoToStore()
@@ -22,11 +22,13 @@ public class SceneController : MonoBehaviour
 
     void GoToVictoryScene()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene("VictoryScene");
     }
 
     public void LateGoToVictoryScene()
     {
-        Invoke(nameof(GoToVictoryScene), 5);
+        Invoke(nameof(GoToVictoryScene), 10);
     }
 }
