@@ -1041,10 +1041,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
+  walkPointRange: 50
   timeBetweenAttacks: 0.5
-  sightRange: 0
-  attackRange: 12
+  sightRange: 50
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
   archerDamage: 5
