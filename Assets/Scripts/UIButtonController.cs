@@ -25,6 +25,8 @@ public class UIButtonController : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         currentCoin = PlayerPrefs.GetInt("coin");
         currentHealth = PlayerPrefs.GetInt("currentHealth");
         maxHealth = PlayerPrefs.GetInt("maxHealth");
@@ -72,8 +74,8 @@ public class UIButtonController : MonoBehaviour
         if (currentCoin - maxSpeedPrice >= 0)
         {
             currentCoin -= maxSpeedPrice;
-            if (maxSpeedPrice == 15) speed = 7;
-            else if (maxSpeedPrice == 20) speed = 9;
+            if (maxSpeedPrice == 15) speed = 11;
+            else if (maxSpeedPrice == 20) speed = 15;
         }
     }
     public void HealUpButton()
@@ -105,14 +107,14 @@ public class UIButtonController : MonoBehaviour
         else if (maxShield == 30) maxShieldPrice = 20;
         else if (maxShield == 40) maxShieldPrice = 99999;
 
-        if (speed == 5) maxSpeedPrice = 15;
-        else if (speed == 7) maxSpeedPrice = 20;
-        else if (speed == 9) maxSpeedPrice = 99999;
+        if (speed == 9) maxSpeedPrice = 15;
+        else if (speed == 11) maxSpeedPrice = 20;
+        else if (speed == 15) maxSpeedPrice = 99999;
 
         // update ui
-        maxHealthPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxHealthPrice.ToString();
-        maxShieldPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxShieldPrice.ToString();
-        maxSpeedPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxSpeedPrice.ToString();
+        maxHealthPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxHealthPrice.ToString() + "$";
+        maxShieldPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxShieldPrice.ToString() + "$";
+        maxSpeedPriceText.GetComponent<TMPro.TextMeshProUGUI>().text = maxSpeedPrice.ToString() + "$";
         coinText.GetComponent<TMPro.TextMeshProUGUI>().text = currentCoin.ToString();
     }
 }
