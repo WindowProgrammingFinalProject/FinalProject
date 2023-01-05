@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SpaceSkies Free.meta
 guid: 530f6a79bbc32834b80773d183a03b4b
 folderAsset: yes
+========
+guid: 3e73512bc1c9d4083acd1edfec8d2abd
+>>>>>>>> a6ed7eac25a8d1fb4b39029b46027c6b34b849ad:Assets/Scenes/VictoryScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

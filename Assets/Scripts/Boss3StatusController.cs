@@ -77,6 +77,7 @@ public class Boss3StatusController : MonoBehaviour
             gameObject.GetComponent<Boss3AIScript>().alive = false;
             Invoke(nameof(DropCoin), 2);
             Invoke(nameof(DestroyMushroom), 2);
+            GameObject.Find("ShowVictoryScene").GetComponent<SceneController>().LateGoToVictoryScene();
         }
     }
 
