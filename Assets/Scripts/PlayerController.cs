@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
     private void ShieldRecover()
     {
         period += UnityEngine.Time.deltaTime;
-        if (period > 1)
+        if (period > 1.5f)
         {
             currentShield += 5;
             if (currentShield > maxShield) currentShield = maxShield;
