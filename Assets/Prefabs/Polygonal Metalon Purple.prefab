@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5321937109522371546}
   maxHealth: 1200
+  dropCoinNumber: 20
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1086,8 +1087,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0490198, y: 0.36459982, z: 2.4535863}
-  m_Center: {x: -0.046754837, y: 0.3177001, z: 0.053846955}
+  m_Size: {x: 3.0490198, y: 0.36459982, z: 2.8590043}
+  m_Center: {x: -0.046754837, y: 0.3177001, z: 0.2565559}
 --- !u!1 &1486048802852170
 GameObject:
   m_ObjectHideFlags: 0

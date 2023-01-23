@@ -21,13 +21,13 @@ public class Boss1AIScript : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    [SerializeField] float timeBetweenAttacks = 1;
+    [SerializeField] float timeBetweenAttacks = 1f;
     bool alreadyAttacked = false;
 
     //States
     [SerializeField] float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-    public int mushroomDamage = 7;
+    public int mushroomDamage = 20;
     public bool alive = true;
 
     public AudioClip die;

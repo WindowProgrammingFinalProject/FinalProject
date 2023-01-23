@@ -211,12 +211,16 @@ public class PlayerController : MonoBehaviour
     private void ShieldRecover()
     {
         period += UnityEngine.Time.deltaTime;
-        if (period > 2)
+        if (period > 1.5f)
         {
             currentShield += 5;
             if (currentShield > maxShield) currentShield = maxShield;
             shieldBar.SetHealth(currentShield);
             period = 0;
+        }
+        if (currentShield <= 0)
+        {
+            currentShield = 0;
         }
     }
     private void InitializePlayerStatus()
